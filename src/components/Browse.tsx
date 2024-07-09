@@ -1,8 +1,11 @@
 import React from "react"
+import Header from "./Header"
 
 const Browse: React.FC = () => {
   return (
-    <div>Browse</div>
+    <div>
+      <Header></Header>
+    </div>
   )
 }
 

@@ -3,7 +3,16 @@
  -Create the react App using vite
  -install TailwindCSS
  -Header
+ -Routing of form
  -login form
+ -signup form
+ -form validation
+ -useref hook
+ -Setting up Firebase
+ -create signup user account
+ -Implement Sign in user Api
+ -created Redux store with user slice
+ -update profile
 
 # Features
 
