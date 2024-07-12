@@ -13,6 +13,17 @@
  -Implement Sign in user Api
  -created Redux store with user slice
  -update profile
+ -Bug fix related to login
+ -Add constants files and put hardcore value there
+ -register in tmbd and register app
+ -get the api key and token and link it
+ -create custom hook for now playing movies
+ -create movie slice
+ -update store with movies data
+ -planning for MainContainer & secondaryContainer
+ -Create custom hook for trailer fetching 
+ -embedded the utube video
+
 
 # Features
 

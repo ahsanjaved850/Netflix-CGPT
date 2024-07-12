@@ -4,29 +4,36 @@ import React, { useRef, useState } from "react"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import  {auth} from "../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../utils/appStore";
 import { addUser } from "../utils/userSlice";
+import { BACKGROUND_URL } from "../utils/constants";
 
 const Login: React.FC = () => {
 
     const [isSignForm, setIsSignInForm] = useState<boolean>(true)
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+    const name = useRef<HTMLInputElement | null>(null);
     const email = useRef<HTMLInputElement | null>(null);
     const password = useRef<HTMLInputElement | null>(null)
-    const navigate = useNavigate()
+
     const dispatch = useDispatch<AppDispatch>();
 
     const handleButtonClick = (e : React.MouseEvent<HTMLButtonElement>) : void => {
         // Validate the form data
         e.preventDefault();
 
+        const refName = name.current?.value || "";
         const refEmail = email.current?.value || "";
         const refPass = password.current?.value || "";
 
-        const message = checkValidData(refEmail, refPass)
+        if(isSignForm){
+            const message = checkValidData(refEmail, refPass, "")
+            setErrorMessage(message);
+            if(message) return;
+        }
+        const message = checkValidData(refEmail, refPass, refName)
         setErrorMessage(message);
         if(message) return;
         
@@ -39,11 +46,11 @@ const Login: React.FC = () => {
                     const user = userCredential.user;
 
                     updateProfile(user, {
-                    displayName: "Ahsan", photoURL: "https://example.com/jane-q-user/profile.jpg"
+                    displayName: name.current?.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
                   }).then(() => {
                     const {uid , email, displayName} = auth.currentUser!;
                     dispatch(addUser({ uid: uid, email: email, displayName: displayName}))
-                    navigate("/browse")
+                   
 
                   }).catch((error) => {
                     setErrorMessage(error.message)
@@ -62,8 +69,6 @@ const Login: React.FC = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
-                navigate("/browse")
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -80,7 +85,7 @@ const Login: React.FC = () => {
     <div>
         <Header />
         <div className="absolute">
-            <img src="https://assets.nflxext.com/ffe/siteui/vlv3/0552717c-9d8c-47bd-9640-4f4efa2de663/cc9ca4c0-cb83-4175-9a10-97d1a99a1e9a/PK-en-20240701-POP_SIGNUP_TWO_WEEKS-perspective_WEB_4a0aded4-19f1-4fd7-b6ba-f65282911095_large.jpg" 
+            <img className="h-[100vh] w-screen" src={BACKGROUND_URL} 
             alt="background-img"
             /> 
         </div>
@@ -89,6 +94,7 @@ const Login: React.FC = () => {
                 {isSignForm ? "Sign In" : "Sign Up"}
             </h1>
           { !isSignForm &&  (<input
+                ref={name}
                 type="text"
                 placeholder="Full Name"
                 className="my-2 p-4 w-full bg-gray-700 rounded-3xl"
