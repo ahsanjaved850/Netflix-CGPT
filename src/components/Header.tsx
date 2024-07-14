@@ -40,7 +40,7 @@ const Header: React.FC = () => {
     }, [])
 
   return (
-    <div className='fixed z-10 w-full px-8 py-2 bg-gradient-to-b from-black flex justify-between'>
+    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-black flex justify-between'>
         <img
           className='w-44' 
           src= {LOGO_URL} 
