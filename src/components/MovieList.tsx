@@ -18,7 +18,7 @@ const MovieList : React.FC<MovieListProps> = ({title ,movies }) => {
     if(!movies) return;
   return (
     <div className='ml-8'>    
-        <h1 className='mt-4 font-bold text-3xl text-white overflow-hidden'>{title}</h1>
+        <h1 className='mt-4 font-bold text-3xl text-white'>{title}</h1>
         <div>
             <MovieCard movies={movies}/>
         </div>

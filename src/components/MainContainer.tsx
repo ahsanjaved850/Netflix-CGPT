@@ -9,12 +9,12 @@ interface Movie {
     overview: string;
     poster_path: string;  
   }
-
+const num : number = Math.floor(Math.random() * 20)
 const MainContainer: React.FC = () => {
     
     const movies = useSelector((store: RootState) => store.movies?.nowPlayingMovies) as Movie[] | undefined;
-
-    const mainMovie = movies ? movies[0] : null;
+    
+    const mainMovie = movies ? movies[num] : null;
     const id = mainMovie ? mainMovie.id : -1;
     const key = useMovieVideo(id);
 

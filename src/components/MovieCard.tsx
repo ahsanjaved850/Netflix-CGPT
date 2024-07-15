@@ -1,5 +1,6 @@
 import React from 'react';
 import { IMAGE_URL } from '../utils/constants';
+import '../utils/style.css';
 
 interface Movie {
     id: number;
@@ -16,7 +17,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies }) => {
     if (!movies) return null;
     
     return (
-        <div className='flex'>
+        <div className='flex overflow-x-scroll hide-scrollbar'>
             {movies.map((movie) => (
                 <img 
                     key={movie.id}

@@ -23,6 +23,10 @@
  -planning for MainContainer & secondaryContainer
  -Create custom hook for trailer fetching 
  -embedded the utube video
+ -Build Second COntainer
+ -Build Movie List
+ -Build MOvie Card
+ -Create custom hooks for popular and toprated movies
 
 
 # Features
