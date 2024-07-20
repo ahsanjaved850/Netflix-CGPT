@@ -27,6 +27,10 @@
  -Build Movie List
  -Build MOvie Card
  -Create custom hooks for popular and toprated movies
+ -GPT search Page
+ -GPT search Bar
+ -Multi-language features in our App
+ -Integrate GPT APIs
 
 
 # Features

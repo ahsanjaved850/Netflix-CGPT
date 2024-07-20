@@ -10,12 +10,11 @@ interface Movie {
 }
 
 interface MovieCardProps {
-    movies: Movie[];
+    movies: Movie[] | null;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movies }) => {
     if (!movies) return null;
-    
     return (
         <div className='flex overflow-x-scroll hide-scrollbar'>
             {movies.map((movie) => (

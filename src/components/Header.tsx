@@ -7,13 +7,16 @@ import { RootState } from "../utils/appStore"
 import { addUser, removeUser } from "../utils/userSlice"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "../utils/appStore";
-import { ICON_URL, LOGO_URL } from "../utils/constants";
+import { ICON_URL, LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header: React.FC = () => {
 
   const navigate = useNavigate()
   const user = useSelector(( store : RootState ) => store.user)
   const dispatch = useDispatch<AppDispatch>();
+  const value = useSelector((store : RootState) => store?.gpt?.showGptSearch)
 
   const handleSignOut = () : void => {
     signOut(auth).then(() => {})
@@ -39,6 +42,13 @@ const Header: React.FC = () => {
       return () => unsubscribe();
     }, [])
 
+  const handleGptSearch = () : void => {
+    dispatch(toggleGptSearchView())
+  }
+  const handleLanguageChange = (e : React.ChangeEvent<HTMLSelectElement>) : void => {
+    dispatch(changeLanguage(e.target.value))
+  }
+
   return (
     <div className='sticky top-0 z-10 w-full px-8 py-2 bg-black flex justify-between'>
         <img
@@ -47,6 +57,19 @@ const Header: React.FC = () => {
             alt='logo'
          />
         { user && <div className="flex p-2 space-x-1">
+          {value && <select  className="text-white pl-3 py-1 m-2 text-lg bg-red-600" onChange={handleLanguageChange}>
+            {SUPPORTED_LANGUAGES.map((lan) => (
+              <option key={lan.identifier} value={lan.identifier}>
+                {lan.name}
+              </option>
+            ))}
+          </select>}
+          <button 
+            className="text-white px-6 py-1 m-2 font-bold text-lg bg-red-600"
+            onClick={handleGptSearch} 
+          >
+              GPT Search
+          </button>
           <img 
             className="w-14 h-14" 
             alt="usericon" 
