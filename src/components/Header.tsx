@@ -50,7 +50,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-black flex justify-between'>
+    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-green-800 flex justify-between sm:bg-blue-600 md:bg-black'>
         <img
           className='w-44' 
           src= {LOGO_URL} 
