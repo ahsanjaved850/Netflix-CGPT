@@ -7,9 +7,10 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTZkODUyZjZiNGM0NDNlNjhlOTM5YzFmZGEzODRkYyIsIm5iZiI6MTcyMDYxNTg3MS45MTgwMjEsInN1YiI6IjY2OGU3Y2JkZTQ0MDIwNDQ0MGQ1YjBlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2WJ3318OlY3D4rzaHs-YaejqgPH7uAQP-OUjHoEU920'
+      // Authorization: `Bearer ${import.meta.env.REACT_APP_TMDB_KEY}`,
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTZkODUyZjZiNGM0NDNlNjhlOTM5YzFmZGEzODRkYyIsIm5iZiI6MTcyMDYxNTg3MS45MTgwMjEsInN1YiI6IjY2OGU3Y2JkZTQ0MDIwNDQ0MGQ1YjBlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2WJ3318OlY3D4rzaHs-YaejqgPH7uAQP-OUjHoEU920"
     }
   };
 
 export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" }, { identifier: "spanish", name: "Spanish" }, { identifier: "urdu", name: "Urdu" }]
-export const OPENAI_KEY = "sk-None-4SrnBabDrmQ79uBscWk6T3BlbkFJqmXWgKY6i6RVYFD1Cwkk"
+export const OPENAI_KEY = "sk-None-4SrnBabDrmQ79uBscWk6T3BlbkFJqmXWgKY6i6RVYFD1Cwkk";

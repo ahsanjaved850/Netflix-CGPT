@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../utils/appStore";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../utils/appStore";
 import { addTopRated } from "../utils/moviesSlice";
 
 interface Movie {
@@ -17,6 +17,8 @@ interface topRatedResponse {
 
 const useTopRated = () => {
   const dispatch = useDispatch<AppDispatch>()
+
+  const topMovies = useSelector((store : RootState) => store.movies.topRatedMovies)
     
     const topRated = async () => {
         try{
@@ -28,7 +30,7 @@ const useTopRated = () => {
         }
     }
   useEffect(() => {
-    topRated();
+    !topMovies && topRated();
   }, [])
 }
 export default useTopRated;

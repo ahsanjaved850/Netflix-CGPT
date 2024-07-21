@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../utils/appStore";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../utils/appStore";
 import { API_OPTIONS } from "../utils/constants";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
@@ -22,6 +22,7 @@ interface NowPlayingResponse {
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch<AppDispatch>()
     
+    const nowPlayingMovies = useSelector((store : RootState) => store.movies?.nowPlayingMovies)
 
     const getNowPlayingMovies = async () => {
         try {
@@ -36,7 +37,7 @@ const useNowPlayingMovies = () => {
         }
     }
     useEffect(() => {
-        getNowPlayingMovies();
+        !nowPlayingMovies && getNowPlayingMovies();
     }, [])  
 }
 
