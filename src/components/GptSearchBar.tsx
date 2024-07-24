@@ -3,7 +3,7 @@ import lang, { LangKey } from '../utils/languageConstants';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../utils/appStore';
 import { addGptMovieResults } from '../utils/gptSlice';
-import { GptSearch } from '../hooks/gptSearch';
+import { GptSearch } from '../utils/gptSearch';
 
 
 const GptSearchBar: React.FC = () => {
