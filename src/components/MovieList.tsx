@@ -17,12 +17,15 @@ const MovieList: React.FC<MovieListProps> = ({ title, movies }) => {
   if (!movies) return null
 
   const moviesArray = Array.isArray(movies) ? movies : [movies];
+  const filteredMovies = moviesArray.filter(movie => movie.poster_path);
 
   return (
-    <div className='ml-8'>    
-      <h1 className='mt-4 font-bold text-3xl text-white'>{title}</h1>
-      <div>
-        <MovieCard movies={moviesArray}/>
+    <div className='ml-2 md:ml-8'>    
+      <h1 className='mt-4 font-semibold text-lg text-white md:text-3xl md:font-bold'>{title}</h1>
+      <div className='flex overflow-x-scroll hide-scrollbar'>
+        {filteredMovies.map(movie => (
+            <MovieCard key={movie.id} movies={movie} />
+          ))}
       </div>
     </div>
   ) 

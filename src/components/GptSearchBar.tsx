@@ -20,17 +20,17 @@ const GptSearchBar: React.FC = () => {
   
 
   return (
-    <div className='relative top-2 ml-[550px]'>
-        <form className='w-[600px] bg-black grid grid-cols-12 rounded-3xl'
+    <div className='relative top-2 pt-6 ml-0  md:ml-[550px]'>
+        <form className='w-full md:w-1/2 bg-black grid grid-cols-12 rounded-3xl'
         onSubmit={(e) => e.preventDefault()}
         >
             <input
                 ref={searchText}
                 type='text'
-                className='p-4 m-4 mr-1 col-span-10 rounded-lg'
+                className='p-4 m-4 mr-1 col-span-9 rounded-lg'
                 placeholder={lang[langKey].searchPlaceholder}
             />
-            <button className='font-semibold text-lg col-span-2 p-2 mx-1 mr-4 my-4 bg-red-600 text-white rounded-lg'
+            <button className='font-semibold text-lg col-span-3 p-2 mx-1 mr-4 my-4 bg-red-600 text-white rounded-lg'
               onClick={gpt}
             >
                 {lang[langKey].search}

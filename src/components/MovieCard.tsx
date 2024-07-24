@@ -10,22 +10,19 @@ interface Movie {
 }
 
 interface MovieCardProps {
-    movies: Movie[] | null;
+    movies: Movie;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movies }) => {
     if (!movies) return null;
     return (
-        <div className='flex overflow-x-scroll hide-scrollbar'>
-            {movies.map((movie) => (
-                <img 
-                    key={movie.id}
-                    className='mt-6 mx-2 p-1 w-52 h-52 bg-gray-200 rounded-lg hover:bg-gray-400'
-                    src={IMAGE_URL + movie.poster_path}
-                    alt={movie.title}
+            <div className='mt-6 mx-1 p-1 bg-gray-200 rounded-lg hover:bg-gray-400 flex-shrink-0'>
+                <img
+                    className='w-44 h-44 hover:bg-gray-400 md:w-[200x] md:h-[200px]' 
+                    src={IMAGE_URL + movies.poster_path}
+                    alt={movies.title}
                 />
-            ))}
-        </div>
+            </div>
     );
 }
 

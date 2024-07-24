@@ -13,4 +13,4 @@ export const API_OPTIONS = {
   };
 
 export const SUPPORTED_LANGUAGES = [{ identifier: "en", name: "English" }, { identifier: "spanish", name: "Spanish" }, { identifier: "urdu", name: "Urdu" }]
-export const OPENAI_KEY = "";
+export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY;

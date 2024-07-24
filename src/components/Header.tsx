@@ -7,7 +7,7 @@ import { RootState } from "../utils/appStore"
 import { addUser, removeUser } from "../utils/userSlice"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "../utils/appStore";
-import { ICON_URL, LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 
@@ -50,13 +50,13 @@ const Header: React.FC = () => {
   }
 
   return (
-    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-green-800 flex justify-between sm:bg-blue-600 md:bg-black'>
+    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-black flex flex-col justify-between md:bg-black md:py-0 md:flex-row'>
         <img
-          className='w-44' 
+          className='w-44 mx-auto md:mx-0' 
           src= {LOGO_URL} 
             alt='logo'
          />
-        { user && <div className="flex p-2 space-x-1">
+        { user && <div className="flex p-2 justify-between">
           {value && <select  className="text-white pl-3 py-1 m-2 text-lg bg-red-600" onChange={handleLanguageChange}>
             {SUPPORTED_LANGUAGES.map((lan) => (
               <option key={lan.identifier} value={lan.identifier}>
@@ -65,17 +65,12 @@ const Header: React.FC = () => {
             ))}
           </select>}
           <button 
-            className="text-white px-6 py-1 m-2 font-bold text-lg bg-red-600"
+            className="text-white px-2 py-1 m-1 font-semibold text-md bg-red-600 md:px-6 md:font-bold md:text-lg"
             onClick={handleGptSearch} 
           >
-              GPT Search
+             {value ? "Home Page" : "GPT Search"} 
           </button>
-          <img 
-            className="w-14 h-14" 
-            alt="usericon" 
-            src={ICON_URL}
-            />
-          <button onClick={handleSignOut} className="font-bold text-white">(Sign Out)</button>
+          <button onClick={handleSignOut} className="font-semibold text-white md:font-bold">(Sign Out)</button>
          </div>}
     </div>
   )
