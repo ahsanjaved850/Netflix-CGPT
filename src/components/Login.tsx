@@ -85,11 +85,11 @@ const Login: React.FC = () => {
     <div>
         <Header />
         <div className="absolute">
-            <img className="h-[100vh] w-screen" src={BACKGROUND_URL} 
+            <img className="h-[100vh] w-screen object-cover" src={BACKGROUND_URL} 
             alt="background-img"
             /> 
         </div>
-        <form className="absolute bg-black w-3/12 my-36 mx-auto left-0 right-0 p-8 text-white bg-opacity-80 rounded-3xl">
+        <form className="absolute bg-black w-[90%] my-20 md:w-3/12 md:my-36 mx-auto left-0 right-0 p-8 text-white bg-opacity-80 rounded-3xl">
             <h1 className="font-bold text-3xl py-4">
                 {isSignForm ? "Sign In" : "Sign Up"}
             </h1>
