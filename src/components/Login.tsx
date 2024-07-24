@@ -112,7 +112,7 @@ const Login: React.FC = () => {
                 placeholder="Password" 
                 className="my-2 p-4 w-full bg-gray-700 rounded-3xl" 
             />
-            { errorMessage && <p className="text-red-600 font-bold text-sm">{errorMessage}</p> }
+            { errorMessage && <p className="text-red-500 font-semibold text-sm">{errorMessage}</p> }
             <button className="p-4 my-6 bg-red-600 w-full rounded-3xl" onClick={handleButtonClick}>
                 {isSignForm ? "Sign in" : "Sign up"}
             </button>
