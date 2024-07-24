@@ -18,7 +18,7 @@ const searchMovie = async (movie: string): Promise<MovieResult[]> => {
   return json.results;
 };
 
-export const GptSearch = async (searchText: string): Promise<{ gptMovies: string[], tmbdResults: MovieResult[[]] }> => {
+export const GptSearch = async (searchText: string): Promise<{ gptMovies: string[], tmbdResults: MovieResult[][] }> => {
   // API to GPT
   const gptQuery = `Act as a movie recommendation system and suggest some movies for the query ${searchText}. Only give me the name of 5 movies, comma separated like the example result given ahead. Example Result: Sholay, Don, Don 2, Koi mil gaya, Golmaal`;
 

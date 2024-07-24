@@ -10,7 +10,7 @@ interface Movie {
 
 interface GptState {
     showGptSearch : boolean,
-    movieResults: Movie[] | null;
+    movieResults: Movie[] | Movie[][] | null;
     moviesNames: string[] | null
 }
 
@@ -27,7 +27,7 @@ const gptSlice = createSlice({
         toggleGptSearchView: (state) => {
             state.showGptSearch = !state.showGptSearch
         },
-        addGptMovieResults: (state, action: PayloadAction<{ moviesNames: string[], movieResults: Movie[] }>) => {
+        addGptMovieResults: (state, action: PayloadAction<{ moviesNames: string[], movieResults: Movie[][]}>) => {
             state.moviesNames = action.payload.moviesNames;
             state.movieResults = action.payload.movieResults;
         }
