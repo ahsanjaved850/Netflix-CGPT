@@ -28,7 +28,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ title, vote_average, tagline, run
     }
 
     return (
-    <div className='w-max-screen h-min-screen grid grid-flow-col col-span-12 mt-9 bg-black'>
+    <div className='w-max-screen h-min-screen grid grid-flow-col col-span-12 bg-black'>
         <div className='grid-cols-6'>
             <img className='ml-3 w-cover h-1/2 sm:h-full md:w-3/2 md:h-full' src={IMAGE_URL + poster_path} alt="poster" />
         </div>
