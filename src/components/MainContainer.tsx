@@ -32,11 +32,11 @@ const MainContainer: React.FC = () => {
               referrerPolicy="strict-origin-when-cross-origin"
             ></iframe>
           </div>
-          <div className="p-4 w-1/2 mx-auto bg-gradient-to-r from-black text-white absolute top-[90px] md:top-[300px]">
+          <div className="p-4 w-1/2 mx-auto bg-gradient-to-r from-black text-white absolute top-[70px] md:top-[60px]">
             <p className="font-semibold text-md md:font-bold md:text-3xl">{title}</p>
-            <p className="hidden sm:hidden md:inline-block text-lg w-full py-4">{overview}</p>
-            <button className="hidden sm:hidden md:inline-block cursor-pointer bg-gray-200 text-black font-bold px-5 py-1 rounded-md hover:bg-opacity-80">Play</button>
-            <button className="hidden sm:hidden md:inline-block cursor-pointer ml-1 bg-gray-500 text-white px-5 py-1 rounded-md hover:bg-opacity-80">More info</button>
+            <p className="hidden md:inline-block  text-lg w-full py-4">{overview}</p>
+            <button className="hidden md:inline-block cursor-pointer bg-gray-200 text-black font-bold px-5 py-1 rounded-md hover:bg-opacity-80">Play</button>
+            <button className="hidden md:inline-block cursor-pointer ml-1 bg-gray-500 text-white px-5 py-1 rounded-md hover:bg-opacity-80">More info</button>
           </div>
         </div>
       );
