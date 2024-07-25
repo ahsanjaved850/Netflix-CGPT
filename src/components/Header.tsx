@@ -56,22 +56,26 @@ const Header: React.FC = () => {
           src= {LOGO_URL} 
             alt='logo'
          />
-        { user && <div className="flex p-2 justify-between">
-          {value && <select  className="text-white pl-3 py-1 m-2 text-lg bg-red-600" onChange={handleLanguageChange}>
-            {SUPPORTED_LANGUAGES.map((lan) => (
-              <option key={lan.identifier} value={lan.identifier}>
-                {lan.name}
-              </option>
-            ))}
-          </select>}
-          <button 
-            className="text-white px-2 py-1 m-1 font-semibold text-md bg-red-600 md:px-6 md:font-bold md:text-lg"
-            onClick={handleGptSearch} 
-          >
-             {value ? "Home Page" : "GPT Search"} 
-          </button>
-          <button onClick={handleSignOut} className="font-semibold text-white md:font-bold">(Sign Out)</button>
-         </div>}
+        { user && 
+          <div className="flex p-2 justify-between">
+            {
+              value && <select  className="text-white pl-3 py-1 m-2 text-lg bg-red-600" onChange={handleLanguageChange}>
+                {SUPPORTED_LANGUAGES.map((lan) => (
+                  <option key={lan.identifier} value={lan.identifier}>
+                    {lan.name}
+                  </option>
+                ))}
+              </select>}
+              <button 
+                className="text-white px-2 py-1 m-1 font-semibold text-md bg-red-600 md:px-6 md:font-bold md:text-lg"
+                onClick={handleGptSearch} 
+              >
+              {value ? "Home Page" : "GPT Search"} 
+            </button>
+           
+            <button onClick={handleSignOut} className="font-semibold text-white md:font-bold">(Sign Out)</button>
+          </div>
+         }
     </div>
   )
 }
