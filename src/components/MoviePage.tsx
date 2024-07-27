@@ -3,6 +3,9 @@ import { IMAGE_URL } from '../utils/constants';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from './Header';
 import movieInfo from '../utils/movieInfo';
+import GptSearch from './GptSearch';
+import { useSelector } from 'react-redux';
+import { RootState } from '../utils/appStore';
 
 interface genres {
     id: number,
@@ -20,6 +23,7 @@ interface MovieResult {
 
 const MoviePage: React.FC = () => {
     const [movie, setMovie] = useState<MovieResult | undefined>(undefined);
+    const showGptSearch = useSelector((store: RootState) => store.gpt?.showGptSearch)
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate()
 
@@ -46,6 +50,9 @@ const MoviePage: React.FC = () => {
     return (
         <div>
             <Header />
+            {showGptSearch ? (
+            <GptSearch />
+            ) : (
             <div className='pt-4 w-max-screen h-min-screen grid grid-flow-col col-span-12 bg-black'>
                 <div className='grid-cols-6'>
                     <img className='ml-3 w-cover h-1/2 sm:h-full md:w-3/2 md:h-fit' src={IMAGE_URL + poster_path} alt="poster" />
@@ -59,7 +66,7 @@ const MoviePage: React.FC = () => {
                     <h2 className='w-3/2 md:w-1/2 py-2 font-semibold'>Overview: {overview}</h2>
                     <button className='bg-red-600 px-6 py-2 mt-10 font-semibold text-md hover:bg-red-800' onClick={handleReturn}>Return</button>
                 </div>
-            </div>
+            </div>)}
          </div>
   );
 };
