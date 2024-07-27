@@ -1,11 +1,16 @@
 import { API_OPTIONS } from "./constants";
 
+interface genres {
+    id: number,
+    name: string
+}
+
 interface MovieResult {
     title: string;
     vote_average: number
     tagline: string
     runtime: number
-    genres: string[]
+    genres: genres[]
     overview: string;
     poster_path: string
   }

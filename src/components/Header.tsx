@@ -26,21 +26,22 @@ const Header: React.FC = () => {
   }
 
   useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user: User | null)=> {
-        if (user) {
-          const {uid, email, displayName} = user;
-          dispatch(addUser({ uid: uid, email: email, displayName: displayName}))
-          navigate("/browse")
-
-        } else {
-          dispatch(removeUser())
-          navigate("/")
-        
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid, email, displayName }));
+        if (window.location.pathname === "/") {
+          navigate("/browse");
         }
-      });
-      // when component unmount the unsubscribed will be called
-      return () => unsubscribe();
-    }, [])
+      } else {
+        dispatch(removeUser());
+        if (window.location.pathname !== "/") {
+          navigate("/");
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch, navigate]);
 
   const handleGptSearch = () : void => {
     dispatch(toggleGptSearchView())

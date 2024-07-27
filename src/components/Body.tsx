@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, RouteObject} from "react-router-do
 import Browse from "./Browse"
 import Login from "./Login"
 import React from "react"
+import MoviePage from "./MoviePage";
 
 const routes: RouteObject[] = [
     {
@@ -11,18 +12,19 @@ const routes: RouteObject[] = [
     {
       path: '/browse',
       element: <Browse />,
-    },
+    },{
+      path: '/browse/movie/:id',
+      element: <MoviePage />,
+    }
   ];
   
-
   const Body: React.FC = () => {
 
   const appRouter = createBrowserRouter(routes);
-  
  
     return (
       <div>
-        <RouterProvider router={appRouter} />
+          <RouterProvider router={appRouter} />
       </div>
     );
   };
