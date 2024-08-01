@@ -14,7 +14,7 @@ import { changeLanguage } from "../utils/configSlice";
 const Header: React.FC = () => {
 
   const navigate = useNavigate()
-  const user = useSelector(( store : RootState ) => store.user)
+  const user = useSelector(( store : RootState ) => store.user.email)
   const dispatch = useDispatch<AppDispatch>();
   const value = useSelector((store : RootState) => store?.gpt?.showGptSearch)
 
@@ -42,39 +42,54 @@ const Header: React.FC = () => {
     });
     return () => unsubscribe();
   }, [dispatch, navigate]);
-
+  
   const handleGptSearch = () : void => {
     dispatch(toggleGptSearchView())
   }
   const handleLanguageChange = (e : React.ChangeEvent<HTMLSelectElement>) : void => {
     dispatch(changeLanguage(e.target.value))
   }
+  const handleLogo = () => {
+    if(value){
+      dispatch(toggleGptSearchView())
+    }
+    navigate("/browse")
+  }
 
   return (
-    <div className='sticky top-0 z-10 w-full px-8 py-2 bg-black flex flex-col justify-between md:bg-black md:py-0 md:flex-row'>
+    <div className='fixed z-10 w-full px-8 bg-black flex flex-col justify-between md:bg-black md:py-0 md:flex-row'>
         <img
-          className='w-44 mx-auto md:mx-0' 
+          className='md:w-48 w-36 mx-auto md:mx-0 cursor-pointer' 
           src= {LOGO_URL} 
-            alt='logo'
+          alt='logo'
+          onClick={handleLogo}
          />
         { user && 
-          <div className="flex p-2 justify-between">
+          <div className="flex md:p-2 justify-between">
             {
-              value && <select  className="text-white pl-3 py-1 m-2 text-lg bg-red-600" onChange={handleLanguageChange}>
+              value && <select  className="text-white pl-3 py-1 m-2 text-sm md:text-lg bg-inherit hover:font-semibold cursor-pointer hover:underline" onChange={handleLanguageChange}>
                 {SUPPORTED_LANGUAGES.map((lan) => (
-                  <option key={lan.identifier} value={lan.identifier}>
+                  <option className="bg-black text-white bg-opacity-80" key={lan.identifier} value={lan.identifier}>
                     {lan.name}
                   </option>
                 ))}
               </select>}
               <button 
-                className="text-white px-2 py-1 m-1 font-semibold text-md bg-red-600 md:px-6 md:font-bold md:text-lg"
+                className="text-white mx-2 font-normal text-sm md:text-lg md:mx-4 hover:font-semibold hover:underline"
                 onClick={handleGptSearch} 
               >
               {value ? "Home Page" : "GPT Search"} 
             </button>
-           
-            <button onClick={handleSignOut} className="font-semibold text-white md:font-bold">(Sign Out)</button>
+            <div className="relative group text-sm md:text-lg ">
+            <button className="font-normal md:font-normal bg-black text-white cursor-pointer ml-0 pt-3 m-2 hover:underline hover:font-semibold">
+              {"Profile"}
+            </button>
+            <ul className="absolute right-0 w-30 bg-black text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+              <li className="p-2 bg-opacity-80 text-sm hover:underline cursor-pointer" onClick={handleSignOut}>
+                Logout
+              </li>
+            </ul>
+          </div>
           </div>
          }
     </div>

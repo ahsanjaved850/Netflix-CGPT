@@ -10,7 +10,7 @@ const GptMovieSuggestion : React.FC = () => {
   if (!moviesNames || !movieResults) return null
 
   return (
-    <div className='absolute p-4 pb-6 m-6 bg-black text-white'>
+    <div className='relative top-20 mx-12 max-[770px]:top-28'>
       <div>
         {
           moviesNames.map((movieName, index) => (

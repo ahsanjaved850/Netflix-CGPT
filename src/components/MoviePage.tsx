@@ -53,18 +53,24 @@ const MoviePage: React.FC = () => {
             {showGptSearch ? (
             <GptSearch />
             ) : (
-            <div className='pt-4 w-max-screen h-min-screen grid grid-flow-col col-span-12 bg-black'>
-                <div className='grid-cols-6'>
-                    <img className='ml-3 w-cover h-1/2 sm:h-full md:w-3/2 md:h-fit' src={IMAGE_URL + poster_path} alt="poster" />
+            <div className='absolute top-20 pt-4 w-max-screen h-max-screen md:h-max-screen md:flex bg-black'>
+                <div className='w-full md:w-[50%] md:h-screen'>
+                    <img className='px-6 md:ml-6 w-full h-[400px] md:h-[80%] md:w-inherit' src={IMAGE_URL + poster_path} alt="poster" />
                 </div>
-                <div className='text-white grid-cols-6 ml-6 sm:ml-4 md:ml-6'>
-                    <h1 className='font-bold text-3xl py-2'>{title}</h1>
-                    <h3 className='py-2 font-semibold'>Ratings: {vote_average}</h3>
-                    <h3 className='py-2 font-semibold'>Runtime: {runtime} mins</h3>
-                    <h3 className='py-2 font-semibold'>Genres: {genreNames}</h3>
-                    <h3 className='py-2 font-semibold'>Tagline: {tagline}</h3>
-                    <h2 className='w-3/2 md:w-1/2 py-2 font-semibold'>Overview: {overview}</h2>
-                    <button className='bg-red-600 px-6 py-2 mt-10 font-semibold text-md hover:bg-red-800' onClick={handleReturn}>Return</button>
+                <div className='text-white px-4 w-full ml-4 md:ml-6 md:w-8/12 md:h-screen'>
+                    <div className='grid grid-flow-col col-span-2 w-full md:w-9/12'>
+                        <div className='grid-cols-1'>
+                            <h1 className='font-semibold text-lg md:font-bold md:text-3xl py-2'>{title}</h1>
+                            <h2 className='mt-4 font-sm py-2 md:font-normal text-left'>{overview}</h2>
+                        </div>
+                        <div className='grid-cols-1 w-fit text-gray-500 font-normal mt-14 ml-10 p-4 border-gray-500 border-l-2'>
+                            <h3 className='py-2'>Genres: <span className='text-white'>{genreNames}</span></h3>
+                            <h3 className='py-2'>Ratings: <span className='text-white'>{vote_average}</span></h3>
+                            <h3 className='py-2'>Tagline: <span className='text-white'>{tagline}</span></h3>
+                            <h3 className='py-2'>Runtime: <span className='text-white'>{runtime} mins</span></h3>
+                        </div>
+                    </div>
+                    <button className='bg-red-600 px-6 py-2 mt-10 font-normal text-md hover:bg-red-800 rounded-md' onClick={handleReturn}>Return</button>
                 </div>
             </div>)}
          </div>

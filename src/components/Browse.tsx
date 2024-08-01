@@ -22,10 +22,14 @@ const Browse: React.FC = () => {
     {showGptSearch ? (
       <GptSearch />
     ) : (
-      <>
-        <MainContainer />
-        <SecondContainer />
-      </>
+      <div className="relative">
+          <div className="relative max-[575px]:top-[140px] top-[100px] md:top-0">
+            <MainContainer />
+          </div>
+          <div className="absolute top-[650px] left-0 right-0 max-[1160px]:top-[600px] max-[1075px]:top-[420px]">
+            <SecondContainer />
+          </div>
+        </div>
     )}
   </div>
   );
