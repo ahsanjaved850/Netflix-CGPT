@@ -12,25 +12,30 @@ interface Movie {
   poster_path: string;
 }
 interface topRatedResponse {
-  results: Movie[]
+  results: Movie[];
 }
 
 const useTopRated = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
 
-  const topMovies = useSelector((store : RootState) => store.movies.topRatedMovies)
-    
-    const topRated = async () => {
-        try{
-            const data = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', API_OPTIONS)
-            const json: topRatedResponse = await data.json()
-            dispatch(addTopRated(json.results))
-        }catch(error){
-            console.log(error)
-        }
+  const topMovies = useSelector(
+    (store: RootState) => store.movies.topRatedMovies,
+  );
+
+  const topRated = async () => {
+    try {
+      const data = await fetch(
+        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+        API_OPTIONS,
+      );
+      const json: topRatedResponse = await data.json();
+      dispatch(addTopRated(json.results));
+    } catch (error) {
+      console.log(error);
     }
+  };
   useEffect(() => {
     !topMovies && topRated();
-  }, [])
-}
+  }, []);
+};
 export default useTopRated;

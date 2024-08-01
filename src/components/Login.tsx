@@ -1,6 +1,6 @@
-import { checkValidData } from "../utils/validate"
-import Header from "./Header"
-import React, { useRef, useState } from "react"
+import { checkValidData } from "../utils/validate";
+import Header from "./Header";
+import React, { useRef, useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -46,7 +46,9 @@ const Login: React.FC = () => {
           })
             .then(() => {
               const { uid, email, displayName } = auth.currentUser!;
-              dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName }),
+              );
             })
             .catch((error) => {
               setErrorMessage(error.message);

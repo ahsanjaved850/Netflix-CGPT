@@ -10,19 +10,19 @@ const initialState: UserState = {
   uid: null,
   email: null,
   displayName: null,
-}  
+};
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    addUser: (_state, action: PayloadAction<UserState>) : UserState  => {
+    addUser: (_state, action: PayloadAction<UserState>): UserState => {
       return action.payload;
     },
     removeUser: () => {
       return initialState;
+    },
   },
-}
 });
 
 export const { addUser, removeUser } = userSlice.actions;

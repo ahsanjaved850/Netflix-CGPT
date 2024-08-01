@@ -1,5 +1,5 @@
-import React from "react"
-import Header from "./Header"
+import React from "react";
+import Header from "./Header";
 import MainContainer from "./MainContainer";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import SecondContainer from "./SecondContainer";
@@ -9,20 +9,21 @@ import { useSelector } from "react-redux";
 import { RootState } from "../utils/appStore";
 import GptSearch from "./GptSearch";
 
-
 const Browse: React.FC = () => {
-  const showGptSearch = useSelector((store: RootState) => store.gpt?.showGptSearch)
-  useNowPlayingMovies()
-  useTopRated()
+  const showGptSearch = useSelector(
+    (store: RootState) => store.gpt?.showGptSearch,
+  );
+  useNowPlayingMovies();
+  useTopRated();
   usePopular();
-  
+
   return (
     <div className="bg-black">
-    <Header />
-    {showGptSearch ? (
-      <GptSearch />
-    ) : (
-      <div className="relative">
+      <Header />
+      {showGptSearch ? (
+        <GptSearch />
+      ) : (
+        <div className="relative">
           <div className="relative max-[575px]:top-[140px] top-[100px] md:top-0">
             <MainContainer />
           </div>
@@ -30,9 +31,9 @@ const Browse: React.FC = () => {
             <SecondContainer />
           </div>
         </div>
-    )}
-  </div>
+      )}
+    </div>
   );
 };
 
-export default Browse
+export default Browse;

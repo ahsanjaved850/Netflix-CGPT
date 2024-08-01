@@ -1,19 +1,26 @@
-import React, { useRef } from 'react';
-import lang, { LangKey } from '../utils/languageConstants';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../utils/appStore';
-import { addGptMovieResults } from '../utils/gptSlice';
-import { GptSearch } from '../utils/gptSearch';
+import React, { useRef } from "react";
+import lang, { LangKey } from "../utils/languageConstants";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../utils/appStore";
+import { addGptMovieResults } from "../utils/gptSlice";
+import { GptSearch } from "../utils/gptSearch";
 
 const GptSearchBar: React.FC = () => {
-  const langKey = useSelector((store: RootState) => store.config.lang) as LangKey;
+  const langKey = useSelector(
+    (store: RootState) => store.config.lang,
+  ) as LangKey;
   const searchText = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch<AppDispatch>();
 
   const gpt = async () => {
     if (searchText.current?.value) {
       const results = await GptSearch(searchText.current.value);
-      dispatch(addGptMovieResults({ moviesNames: results.gptMovies, movieResults: results.tmbdResults }));
+      dispatch(
+        addGptMovieResults({
+          moviesNames: results.gptMovies,
+          movieResults: results.tmbdResults,
+        }),
+      );
     }
   };
 

@@ -1,15 +1,14 @@
 import React from "react";
-import Body from "./components/Body"
-import { Provider } from "react-redux"
-import appStore from "./utils/appStore"
-
+import Body from "./components/Body";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const App: React.FC = () => {
   return (
     <Provider store={appStore}>
-        <Body />
-  </Provider>
-  )
-}
+      <Body />
+    </Provider>
+  );
+};
 
-export default App
+export default App;
